@@ -1,9 +1,8 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
+import { useGetPosts } from "@/api/hooks";
 
 export default function Home() {
-  return (
-    <>
-      <Button>Click me</Button>
-    </>
-  );
+  const getPosts = useGetPosts();
+  return <></>;
 }
