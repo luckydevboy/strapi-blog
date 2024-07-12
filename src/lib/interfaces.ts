@@ -1,5 +1,5 @@
 export interface Response<T> {
-  data: Data<T>;
+  data: Data<T>[];
   meta: Meta;
 }
 
@@ -14,7 +14,7 @@ export interface Meta {
 
 export interface Data<T> {
   id: number;
-  attributes: T[];
+  attributes: T;
 }
 
 export interface Attribute {

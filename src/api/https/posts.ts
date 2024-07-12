@@ -6,7 +6,7 @@ import { Post, Response } from "@/lib/interfaces";
 export const getPosts = async (params: {
   page: number | undefined;
   pageSize: number | undefined;
-}): Promise<AxiosResponse<Response<Post[]>>> => {
+}): Promise<AxiosResponse<Response<Post>>> => {
   return await axios.get("/api/posts?populate=cover", {
     params: {
       "pagination[page]": params.page,
