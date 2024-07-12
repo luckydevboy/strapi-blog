@@ -7,21 +7,26 @@ type Props = {
   data: {
     title: string;
     summary: string;
-    content: any;
-    updatedAt: string;
     cover: string;
   };
   className?: string;
-  imgHeight?: number;
+  imgClassname?: string;
 };
 
-const PostCard = ({ type, data, className, imgHeight = 500 }: Props) => {
-  const { cover, summary, updatedAt, title, content } = data;
+const PostCard = ({
+  type,
+  data,
+  className,
+  imgClassname = "h-[500px]",
+}: Props) => {
+  const { cover, summary, title } = data;
 
   if (type === "horizontal") {
     return (
       <div className={cn(["flex gap-x-4", className])}>
-        <img src={cover} alt="" className="rounded-lg object-cover w-2/5" />
+        <div className={cn(["relative", imgClassname])}>
+          <Image src={cover} alt="" fill className="rounded-lg object-cover" />
+        </div>
         <div className="flex flex-col justify-between gap-y-2">
           <h1 className="text-lg font-semibold">{title}</h1>
           <p className="line-clamp-3 text-zinc-400 text-sm">{summary}</p>
@@ -34,7 +39,7 @@ const PostCard = ({ type, data, className, imgHeight = 500 }: Props) => {
   } else {
     return (
       <div className={cn(["space-y-4", className])}>
-        <div className="relative w-full" style={{ height: imgHeight }}>
+        <div className={cn(["relative w-full", imgClassname])}>
           <Image src={cover} className="rounded-lg object-cover" alt="" fill />
         </div>
         <h1 className="text-2xl font-bold">{title}</h1>
