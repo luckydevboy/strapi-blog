@@ -9,5 +9,6 @@ export const useGetPosts = (params?: { page: number; pageSize: number }) => {
   return useQuery({
     queryKey: ["posts", page, pageSize],
     queryFn: () => getPosts({ page, pageSize }),
+    select: res => res.data.data
   });
 };
